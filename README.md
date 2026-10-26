@@ -1,4 +1,4 @@
-# schmidbusiness.ch
+# schmidbusiness.com
 
 Website von Schmid Business Solutions (Ivan Schmid), gebaut mit [Astro](https://astro.build).
 
