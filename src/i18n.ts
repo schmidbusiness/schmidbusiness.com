@@ -16,7 +16,7 @@ export const ui = {
 		htmlLang: 'de-CH',
 		ogLocale: 'de_CH',
 		description:
-			'Ivan Schmid – Unternehmer aus Steffisburg. Seit über 25 Jahren baue ich Unternehmen, Produkte und digitale Plattformen auf.',
+			'Ivan Schmid – Unternehmer aus Steffisburg. Seit über 25 Jahren baue ich gemeinsam mit Partnern digitale Unternehmen, Produkte und Plattformen auf.',
 		homeAria: 'Schmid Business Solutions – Startseite',
 		contactLink: 'Kontakt',
 		langLabel: 'Sprache',
@@ -39,7 +39,7 @@ export const ui = {
 			imgAlt: 'Abendstimmung über dem Wolkenmeer, fotografiert bei der Blüemlisalphütte auf 2834 m ü. M.',
 			imgCaption: 'Blüemlisalphütte · 2834 m ü. M.',
 			about: 'Über mich',
-			lead: 'Ich bin Unternehmer aus Überzeugung. Seit über 25 Jahren baue ich Unternehmen, Produkte und digitale Plattformen auf – unter anderem als Gründer von Payrexx, Hotelcard, Comvation und 1Daily.',
+			lead: 'Ich bin Unternehmer aus Überzeugung. Seit über 25 Jahren baue ich gemeinsam mit Partnern digitale Unternehmen, Produkte und Plattformen auf – von der ersten Idee bis zum tragfähigen Geschäft. Dazu gehören Payrexx, Hotelcard, Comvation und 1Daily.',
 			partner: 'Offizieller Payrexx Solution Partner',
 			ventures: 'Was ich aufgebaut habe',
 			venturesItems: [
@@ -91,7 +91,7 @@ export const ui = {
 		htmlLang: 'en',
 		ogLocale: 'en_GB',
 		description:
-			'Ivan Schmid – entrepreneur based in Steffisburg, Switzerland. For more than 25 years I have been building companies, products and digital platforms.',
+			'Ivan Schmid – entrepreneur based in Steffisburg, Switzerland. For more than 25 years, I have been building digital companies, products and platforms together with partners.',
 		homeAria: 'Schmid Business Solutions – Home',
 		contactLink: 'Contact',
 		langLabel: 'Language',
@@ -114,7 +114,7 @@ export const ui = {
 			imgAlt: 'Evening light above a sea of clouds, photographed at the Blüemlisalp hut at 2,834 m',
 			imgCaption: 'Blüemlisalp hut · 2,834 m',
 			about: 'About me',
-			lead: 'I am an entrepreneur by conviction. For more than 25 years I have been building companies, products and digital platforms – among others as founder of Payrexx, Hotelcard, Comvation and 1Daily.',
+			lead: 'I am an entrepreneur by conviction. For more than 25 years, I have been building digital companies, products and platforms together with partners – from the first idea to a sustainable business. These include Payrexx, Hotelcard, Comvation and 1Daily.',
 			partner: 'Official Payrexx Solution Partner',
 			ventures: 'What I have built',
 			venturesItems: [
