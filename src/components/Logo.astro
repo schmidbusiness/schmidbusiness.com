@@ -1,0 +1,74 @@
+---
+// Vektor-Logo (Schrift in Pfaden), inline eingebettet für den Hover-Effekt
+import raw from '../../public/logo.svg?raw';
+
+const viewBox = raw.match(/viewBox="([^"]+)"/)?.[1] ?? '0 0 544 119';
+const paths = [...raw.matchAll(/<path[^>]*\sd="([^"]+)"/g)].map((m) => m[1]);
+---
+
+<span class="logo">
+	<svg viewBox={viewBox} role="img" aria-label="Schmid Business Solutions">
+		<path class="logo-name" d={paths[0]}></path>
+		<path class="logo-sub" d={paths[1]}></path>
+	</svg>
+</span>
+
+<style>
+	.logo {
+		position: relative;
+		display: block;
+		width: 156px;
+		padding-bottom: 7px;
+	}
+
+	svg {
+		display: block;
+		width: 100%;
+		height: auto;
+		overflow: visible;
+	}
+
+	.logo-name {
+		fill: var(--ink);
+		transition: fill 0.5s var(--ease);
+	}
+
+	.logo-sub {
+		fill: var(--gold);
+		transition: fill 0.5s var(--ease);
+	}
+
+	.logo::after {
+		content: '';
+		position: absolute;
+		left: 0;
+		right: 0;
+		bottom: 0;
+		height: 1px;
+		background: var(--gold);
+		transform: scaleX(0);
+		transform-origin: left;
+		transition: transform 0.7s var(--ease);
+	}
+
+	:global(a:hover) > .logo .logo-name,
+	:global(a:focus-visible) > .logo .logo-name {
+		fill: var(--gold);
+	}
+
+	:global(a:hover) > .logo .logo-sub,
+	:global(a:focus-visible) > .logo .logo-sub {
+		fill: var(--ink);
+	}
+
+	:global(a:hover) > .logo::after,
+	:global(a:focus-visible) > .logo::after {
+		transform: scaleX(1);
+	}
+
+	@media (max-width: 560px) {
+		.logo {
+			width: 128px;
+		}
+	}
+</style>

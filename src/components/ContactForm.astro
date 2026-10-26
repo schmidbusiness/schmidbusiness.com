@@ -1,0 +1,257 @@
+---
+// ContactForm.astro – schlankes Kontaktformular, Versand über EmailJS
+import { ui, routes, type Lang } from '../i18n';
+
+interface Props {
+	lang: Lang;
+}
+
+const { lang } = Astro.props;
+const f = ui[lang].form;
+const privacyHref = routes.privacy[lang];
+const privacyLabel = ui[lang].privacy;
+---
+
+<form id="contact-form" class="contact-form" novalidate>
+	<div class="row">
+		<div class="field">
+			<label for="cf-name">{f.name}</label>
+			<input id="cf-name" name="name" type="text" autocomplete="name" required />
+		</div>
+		<div class="field">
+			<label for="cf-email">{f.email}</label>
+			<input id="cf-email" name="email" type="email" autocomplete="email" required />
+		</div>
+	</div>
+	<div class="field">
+		<label for="cf-message">{f.message}</label>
+		<textarea id="cf-message" name="message" rows="5" required></textarea>
+	</div>
+	<div class="actions">
+		<p class="consent">
+			{f.consent} <a href={privacyHref}>{privacyLabel}</a>
+		</p>
+		<button id="submit-btn" type="submit"><span class="btn-label">{f.send}</span><span class="btn-arrow" aria-hidden="true">→</span></button>
+	</div>
+	<div id="form-status" class="status" role="status" aria-live="polite" hidden></div>
+</form>
+
+<style>
+	.contact-form {
+		display: grid;
+		gap: 28px;
+	}
+
+	.row {
+		display: grid;
+		grid-template-columns: 1fr 1fr;
+		gap: 28px 36px;
+	}
+
+	.field {
+		display: grid;
+		gap: 4px;
+	}
+
+	label {
+		font-family: var(--mono);
+		font-size: 11px;
+		letter-spacing: 0.08em;
+		text-transform: uppercase;
+		color: var(--muted);
+	}
+
+	label::before {
+		content: '> ';
+		color: var(--gold);
+	}
+
+	input,
+	textarea {
+		width: 100%;
+		font-family: var(--sans);
+		font-size: 17px;
+		font-weight: 400;
+		color: #fff;
+		background: rgba(10, 10, 9, 0.55);
+		border: 1px solid var(--line-2);
+		border-radius: 0;
+		padding: 12px 16px;
+		margin-top: 6px;
+		transition: border-color 0.4s var(--ease), background 0.4s var(--ease);
+	}
+
+	textarea {
+		resize: vertical;
+		min-height: 150px;
+		line-height: 1.45;
+	}
+
+	input:hover,
+	textarea:hover {
+		border-color: rgba(255, 255, 255, 0.4);
+	}
+
+	input:focus,
+	textarea:focus {
+		outline: none;
+		border-color: var(--gold);
+		background: rgba(10, 10, 9, 0.8);
+		box-shadow: 0 0 0 3px rgba(201, 172, 116, 0.12);
+	}
+
+	.actions {
+		display: flex;
+		align-items: center;
+		justify-content: space-between;
+		gap: 28px;
+		margin-top: 8px;
+	}
+
+	.consent {
+		margin: 0;
+		max-width: 24em;
+		font-size: 13px;
+		line-height: 1.6;
+		color: var(--muted);
+	}
+
+	.consent a {
+		color: rgba(255, 255, 255, 0.7);
+		text-underline-offset: 3px;
+	}
+
+	button {
+		flex: none;
+		display: inline-flex;
+		align-items: center;
+		gap: 18px;
+		font-family: var(--mono);
+		font-size: 12px;
+		font-weight: 500;
+		letter-spacing: 0.08em;
+		text-transform: uppercase;
+		color: var(--bg);
+		background: var(--gold);
+		border: 1px solid var(--gold);
+		border-radius: 0;
+		padding: 20px 30px 20px 34px;
+		cursor: pointer;
+		transition: background 0.4s var(--ease), color 0.4s var(--ease), border-color 0.4s var(--ease);
+	}
+
+	.btn-arrow {
+		font-size: 15px;
+		letter-spacing: 0;
+		transition: transform 0.4s var(--ease);
+	}
+
+	button:hover {
+		background: #e0c690;
+		border-color: #e0c690;
+		box-shadow: 0 0 28px var(--gold-glow);
+	}
+
+	button:hover .btn-arrow {
+		transform: translateX(4px);
+	}
+
+	button:disabled {
+		opacity: 0.6;
+		cursor: default;
+	}
+
+	.status {
+		font-size: 15px;
+		line-height: 1.6;
+		padding: 16px 0 0;
+		border-top: 1px solid var(--dark-line);
+	}
+
+	.status[data-kind='success'] {
+		color: var(--gold);
+	}
+
+	.status[data-kind='error'] {
+		color: #e8b4ab;
+	}
+
+	@media (max-width: 600px) {
+		.row {
+			grid-template-columns: 1fr;
+		}
+
+		.actions {
+			flex-direction: column-reverse;
+			align-items: stretch;
+		}
+
+		button {
+			justify-content: space-between;
+		}
+	}
+</style>
+
+<script is:inline src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4.4.1/dist/email.min.js"></script>
+<script define:vars={{ f, lang }}>
+	(function () {
+		var form = document.getElementById('contact-form');
+		var btn = document.getElementById('submit-btn');
+		var statusBox = document.getElementById('form-status');
+		if (!form || !btn) return;
+		var label = btn.querySelector('.btn-label');
+
+		if (window.emailjs) {
+			emailjs.init({ publicKey: 'FQeBWdwkjiwk9aYxl' });
+		}
+
+		function showStatus(kind, text) {
+			statusBox.textContent = text;
+			statusBox.dataset.kind = kind;
+			statusBox.hidden = false;
+		}
+
+		form.addEventListener('submit', function (e) {
+			e.preventDefault();
+			statusBox.hidden = true;
+
+			if (!form.checkValidity()) {
+				form.reportValidity();
+				return;
+			}
+
+			if (!window.emailjs) {
+				showStatus('error', f.unavailable);
+				return;
+			}
+
+			btn.disabled = true;
+			label.textContent = f.sending;
+
+			var params = {
+				to_email: 'office@schmidbusiness.ch',
+				from_name: form.name.value.trim(),
+				from_email: form.email.value.trim(),
+				request: 'Kontaktformular schmidbusiness.ch',
+				message: form.message.value.trim(),
+				language: lang === 'en' ? 'Englisch' : 'Deutsch',
+				subject: 'Website Anfrage von schmidbusiness.ch'
+			};
+
+			emailjs
+				.send('service_mtfmush', 'template_ws51hqc', params)
+				.then(function () {
+					showStatus('success', f.success);
+					form.reset();
+				})
+				.catch(function (err) {
+					console.error('EmailJS:', err);
+					showStatus('error', f.error);
+				})
+				.finally(function () {
+					btn.disabled = false;
+					label.textContent = f.send;
+				});
+		});
+	})();
+</script>

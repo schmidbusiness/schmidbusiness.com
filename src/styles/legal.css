@@ -1,0 +1,7 @@
+.legal { max-width: 780px; margin: 0 auto; padding: calc(var(--header-h) + clamp(48px, 7vw, 96px)) var(--gutter) clamp(72px, 10vw, 136px); }
+.legal .back { font-family: var(--mono); font-size: 11.5px; letter-spacing: 0.08em; text-transform: uppercase; text-decoration: none; color: var(--gold); }
+.legal h1 { font-weight: 300; font-size: clamp(42px, 6vw, 72px); line-height: 1.02; letter-spacing: -0.035em; margin: 28px 0 16px; }
+.legal .stand { font-family: var(--mono); color: var(--muted); font-size: 12px; letter-spacing: 0.04em; margin: 0 0 48px; }
+.legal h2 { font-size: 20px; font-weight: 600; letter-spacing: -0.01em; margin: 44px 0 10px; padding-top: 20px; border-top: 1px solid var(--line); }
+.legal p, .legal ul, .legal address { margin: 0 0 12px; color: var(--ink-2); font-size: 16px; font-style: normal; }
+.legal a { color: var(--gold); text-underline-offset: 3px; }
