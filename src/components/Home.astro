@@ -23,21 +23,24 @@ const timeline = [...t.venturesItems].sort((a, b) => a.start - b.start);
 	<main>
 		<!-- ================= HERO ================= -->
 		<section class="hero" aria-labelledby="hero-title">
-			<div class="hero-media">
-				<img src="/hero-gipfel.webp" width="1100" height="784" alt={t.imgAlt} fetchpriority="high" />
-			</div>
-			<div class="hero-shade" aria-hidden="true"></div>
 			<canvas class="hero-net" aria-hidden="true"></canvas>
 			<div class="hero-grid" aria-hidden="true"></div>
 			<div class="hero-scan" aria-hidden="true"></div>
 
 			<div class="hud" aria-hidden="true">
 				<span class="c c-tl"></span><span class="c c-tr"></span><span class="c c-bl"></span><span class="c c-br"></span>
-				<span class="hud-read hud-tr mono">N 46°46′41″ · E 7°37′58″</span>
+				<span class="hud-read hud-tr mono">{t.imgCaption}</span>
 				<span class="hud-read hud-br mono">{t.scroll} <span class="hud-arrow">↓</span></span>
 			</div>
 
-			<div class="container hero-content">
+			<div class="hero-stage">
+				<picture class="hero-pic">
+					<source media="(max-width: 760px)" srcset="/hero-bluemlisalp-mobil.webp" width="900" height="1125" />
+					<img src="/hero-bluemlisalp.webp" width="2576" height="1203" alt={t.imgAlt} fetchpriority="high" />
+				</picture>
+				<div class="stage-shade" aria-hidden="true"></div>
+				<span class="fc fc-tl" aria-hidden="true"></span><span class="fc fc-tr" aria-hidden="true"></span><span class="fc fc-bl" aria-hidden="true"></span><span class="fc fc-br" aria-hidden="true"></span>
+				<div class="hero-text">
 				<p class="kicker mono reveal">
 					<span class="pulse" aria-hidden="true"></span>
 					{t.kicker}<span class="cursor" aria-hidden="true">_</span>
@@ -51,6 +54,7 @@ const timeline = [...t.venturesItems].sort((a, b) => a.start - b.start);
 					<span>{t.metaLeft}</span>
 					<span class="meta-line" aria-hidden="true"></span>
 					<span>{t.metaRight}</span>
+				</div>
 				</div>
 			</div>
 		</section>
@@ -141,9 +145,6 @@ const timeline = [...t.venturesItems].sort((a, b) => a.start - b.start);
 
 		<!-- ================= KONTAKT ================= -->
 		<section class="contact" id="kontakt" aria-labelledby="kontakt-titel">
-			<div class="contact-media" aria-hidden="true">
-				<img src="/huette-grat.webp" width="1200" height="900" alt="" loading="lazy" />
-			</div>
 			<div class="container contact-inner">
 				<div class="contact-head">
 					<p class="label mono in-view">
@@ -333,34 +334,12 @@ const timeline = [...t.venturesItems].sort((a, b) => a.start - b.start);
 		position: relative;
 		min-height: 100svh;
 		display: flex;
-		align-items: flex-end;
+		align-items: center;
+		justify-content: center;
+		padding: calc(var(--header-h) + 16px) var(--gutter) clamp(56px, 8vh, 88px);
 		overflow: hidden;
 		isolation: isolate;
 		background: var(--bg);
-	}
-
-	.hero-media {
-		position: absolute;
-		inset: 0;
-		z-index: -4;
-	}
-
-	.hero-media img {
-		width: 100%;
-		height: 100%;
-		object-fit: cover;
-		object-position: 50% 62%;
-		filter: saturate(0.9) contrast(1.06) brightness(0.92);
-	}
-
-	.hero-shade {
-		position: absolute;
-		inset: 0;
-		z-index: -3;
-		background:
-			linear-gradient(180deg, rgba(10, 10, 9, 0.7) 0%, rgba(10, 10, 9, 0) 22%),
-			linear-gradient(90deg, rgba(10, 10, 9, 0.82) 0%, rgba(10, 10, 9, 0.35) 48%, rgba(10, 10, 9, 0.05) 100%),
-			linear-gradient(0deg, var(--bg) 0%, rgba(10, 10, 9, 0.55) 28%, rgba(10, 10, 9, 0) 60%);
 	}
 
 	.hero-grid {
@@ -418,6 +397,7 @@ const timeline = [...t.venturesItems].sort((a, b) => a.start - b.start);
 	}
 
 	.c {
+		display: none;
 		position: absolute;
 		width: 22px;
 		height: 22px;
@@ -483,9 +463,107 @@ const timeline = [...t.venturesItems].sort((a, b) => a.start - b.start);
 		}
 	}
 
-	.hero-content {
-		padding-top: calc(var(--header-h) + 80px);
-		padding-bottom: clamp(64px, 11vh, 120px);
+	/* ---------- Bühne mit Hero-Bild (zentriert, max. Originalbreite) ---------- */
+	.hero-stage {
+		position: relative;
+		width: 100%;
+		max-width: 1400px;
+		aspect-ratio: 2576 / 1203;
+		display: flex;
+		align-items: flex-end;
+	}
+
+	.hero-pic {
+		position: absolute;
+		inset: 0;
+		z-index: -3;
+	}
+
+	.hero-pic img {
+		display: block;
+		width: 100%;
+		height: 100%;
+		object-fit: cover;
+	}
+
+	.stage-shade {
+		position: absolute;
+		inset: -1px;
+		z-index: -3;
+		pointer-events: none;
+		background:
+			linear-gradient(90deg, var(--bg) 0%, rgba(10, 10, 9, 0) 9%, rgba(10, 10, 9, 0) 91%, var(--bg) 100%),
+			linear-gradient(0deg, var(--bg) 0%, rgba(10, 10, 9, 0.35) 22%, rgba(10, 10, 9, 0) 45%),
+			linear-gradient(180deg, var(--bg) 0%, rgba(10, 10, 9, 0) 12%),
+			linear-gradient(90deg, rgba(10, 10, 9, 0.78) 0%, rgba(10, 10, 9, 0.4) 42%, rgba(10, 10, 9, 0) 70%);
+	}
+
+	.hero-text {
+		position: relative;
+		padding: 0 clamp(24px, 5vw, 64px) clamp(28px, 4vw, 56px);
+	}
+
+	.fc {
+		position: absolute;
+		width: 18px;
+		height: 18px;
+		border: 0 solid rgba(201, 172, 116, 0.75);
+	}
+	.fc-tl {
+		top: -10px;
+		left: -10px;
+		border-top-width: 1px;
+		border-left-width: 1px;
+	}
+	.fc-tr {
+		top: -10px;
+		right: -10px;
+		border-top-width: 1px;
+		border-right-width: 1px;
+	}
+	.fc-bl {
+		bottom: -10px;
+		left: -10px;
+		border-bottom-width: 1px;
+		border-left-width: 1px;
+	}
+	.fc-br {
+		bottom: -10px;
+		right: -10px;
+		border-bottom-width: 1px;
+		border-right-width: 1px;
+	}
+
+	@media (prefers-reduced-motion: no-preference) {
+		.hero-pic {
+			animation: settle 2.4s var(--ease) both;
+		}
+	}
+
+	@media (max-width: 760px) {
+		.hero {
+			padding-left: 0;
+			padding-right: 0;
+		}
+
+		.hero-stage {
+			aspect-ratio: 4 / 5;
+			max-height: calc(100svh - var(--header-h) - 40px);
+		}
+
+		.stage-shade {
+			background:
+				linear-gradient(0deg, var(--bg) 0%, rgba(10, 10, 9, 0.7) 30%, rgba(10, 10, 9, 0) 60%),
+				linear-gradient(180deg, var(--bg) 0%, rgba(10, 10, 9, 0) 14%);
+		}
+
+		.fc {
+			display: none;
+		}
+
+		.hero-text {
+			padding: 0 20px 8px;
+		}
 	}
 
 	.kicker {
@@ -545,7 +623,7 @@ const timeline = [...t.venturesItems].sort((a, b) => a.start - b.start);
 	h1 {
 		margin: 0;
 		font-weight: 300;
-		font-size: clamp(42px, 7.4vw, 112px);
+		font-size: clamp(38px, 5.2vw, 80px);
 		line-height: 0.98;
 		letter-spacing: -0.045em;
 		max-width: 11em;
@@ -599,9 +677,6 @@ const timeline = [...t.venturesItems].sort((a, b) => a.start - b.start);
 		}
 		.reveal-3 {
 			animation-delay: 0.3s;
-		}
-		.hero-media img {
-			animation: settle 2.6s var(--ease) both;
 		}
 		@keyframes reveal {
 			from {
@@ -696,8 +771,8 @@ const timeline = [...t.venturesItems].sort((a, b) => a.start - b.start);
 		height: 100%;
 		z-index: -2;
 		pointer-events: none;
-		mask-image: linear-gradient(90deg, transparent 0%, rgba(0, 0, 0, 0.45) 30%, #000 60%);
-		-webkit-mask-image: linear-gradient(90deg, transparent 0%, rgba(0, 0, 0, 0.45) 30%, #000 60%);
+		mask-image: linear-gradient(90deg, rgba(0, 0, 0, 0.3) 0%, #000 55%);
+		-webkit-mask-image: linear-gradient(90deg, rgba(0, 0, 0, 0.3) 0%, #000 55%);
 	}
 
 	/* ================= LABELS ================= */
@@ -975,30 +1050,6 @@ const timeline = [...t.venturesItems].sort((a, b) => a.start - b.start);
 		border-top: 1px solid var(--line);
 	}
 
-	.contact-media {
-		position: absolute;
-		inset: 0;
-		z-index: -1;
-	}
-
-	.contact-media img {
-		width: 100%;
-		height: 100%;
-		object-fit: cover;
-		object-position: 30% 40%;
-		opacity: 0.38;
-		filter: saturate(0.8);
-	}
-
-	.contact-media::after {
-		content: '';
-		position: absolute;
-		inset: 0;
-		background:
-			linear-gradient(180deg, var(--bg) 0%, rgba(10, 10, 9, 0.4) 30%, rgba(10, 10, 9, 0.6) 70%, var(--bg) 100%),
-			linear-gradient(90deg, rgba(10, 10, 9, 0.3), rgba(10, 10, 9, 0.85));
-	}
-
 	.contact-inner {
 		display: grid;
 		grid-template-columns: 1fr 1.15fr;
@@ -1099,9 +1150,6 @@ const timeline = [...t.venturesItems].sort((a, b) => a.start - b.start);
 			padding: 24px 0 26px;
 		}
 
-		.hero-media img {
-			object-position: 30% 60%;
-		}
 	}
 
 	@media (max-width: 640px) {
