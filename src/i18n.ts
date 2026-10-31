@@ -57,7 +57,7 @@ export const ui = {
 					years: 'Aktuell',
 					company: '1Daily AG',
 					role: 'Gründer',
-					text: 'Gründung der 1Daily AG für den Eigenhandel an den Finanzmärkten. Entwicklung eigener, KI-gestützter Analyse- und Handelssysteme.',
+					text: 'Gründung der 1Daily AG für den Eigenhandel an den Finanzmärkten. Entwicklung eigener Produkte für einen datenbasierten und disziplinierten Handel: Goldcheck, eine KI-gestützte Plattform für Marktanalysen und Handelssignale, sowie RiskGuard, ein eigenes System für das Risikomanagement, das offene Positionen laufend überwacht und Verlustrisiken konsequent begrenzt.',
 				},
 				{
 					years: '2015 – 2025',
@@ -145,7 +145,7 @@ export const ui = {
 					years: 'Current',
 					company: '1Daily AG',
 					role: 'Founder',
-					text: 'Founded 1Daily AG for proprietary trading on the financial markets. Development of proprietary AI-supported analysis and trading systems.',
+					text: 'Founded 1Daily AG for proprietary trading on the financial markets. Development of in-house products for data-driven, disciplined trading: Goldcheck, an AI-supported platform for market analysis and trading signals, and RiskGuard, a proprietary risk management system that continuously monitors open positions and consistently limits downside risk.',
 				},
 				{
 					years: '2015 – 2025',
