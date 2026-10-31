@@ -39,7 +39,7 @@ export const ui = {
 			imgAlt: 'Porträt von Ivan Schmid',
 			imgCaption: 'Blüemlisalphütte · 2834 m ü. M.',
 			about: 'Über mich',
-			lead: 'Ich bin Unternehmer aus Überzeugung. Seit über 25 Jahren baue ich gemeinsam mit Partnern digitale Unternehmen, Produkte und Plattformen auf – von der ersten Idee bis zum tragfähigen Geschäft. Dazu gehören Payrexx, Hotelcard, Comvation, 1Daily und SwissOwners.',
+			lead: 'Ich bin Unternehmer aus Überzeugung. Seit über 25 Jahren baue ich gemeinsam mit Partnern digitale Unternehmen, Produkte und Plattformen auf – von der ersten Idee bis zum tragfähigen Geschäft. Dazu gehören Payrexx, Hotelcard, Comvation und 1Daily.',
 			partner: 'Offizieller Payrexx Solution Partner',
 			exitLabel: 'Aktien verkauft',
 			cta: 'Kontakt aufnehmen',
@@ -48,22 +48,16 @@ export const ui = {
 			stats: [
 				{ value: '25+', label: 'Jahre als Unternehmer, CEO und Verwaltungsrat' },
 				{ value: 'CHF 1 Mrd.+', label: 'Transaktionen pro Jahr auf der Payrexx-Plattform' },
-				{ value: '5', label: 'aufgebaute Unternehmen und Plattformen – Payrexx, Hotelcard, Comvation, 1Daily, SwissOwners' },
+				{ value: '4+', label: 'gegründete Unternehmen – Payrexx, Hotelcard, Comvation, 1Daily' },
 			],
 			contactEyebrow: 'Kontakt',
 			ventures: 'Was ich aufgebaut habe',
 			venturesItems: [
 				{
 					years: 'Aktuell',
-					company: 'SwissOwners.ch',
-					role: 'Gründer',
-					text: 'Aufbau eines Schweizer Marktplatzes für Anteile an nicht kotierten KMU und Startups. Unternehmerinnen, Unternehmer und Investoren finden hier diskret zueinander – mit geprüften Inseraten, Vertraulichkeitserklärung und Kontakt direkt zwischen den Beteiligten.',
-				},
-				{
-					years: 'Aktuell',
 					company: '1Daily AG',
 					role: 'Gründer',
-					text: 'Gründung der 1Daily AG für den Eigenhandel an den Finanzmärkten. Entwicklung eigener, KI-gestützter Analyse- und Handelssysteme mit Schwerpunkt Gold.',
+					text: 'Gründung der 1Daily AG für den Eigenhandel an den Finanzmärkten. Entwicklung eigener, KI-gestützter Analyse- und Handelssysteme.',
 				},
 				{
 					years: '2015 – 2025',
@@ -133,7 +127,7 @@ export const ui = {
 			imgAlt: 'Portrait of Ivan Schmid',
 			imgCaption: 'Blüemlisalp hut · 2,834 m',
 			about: 'About me',
-			lead: 'I am an entrepreneur by conviction. For more than 25 years, I have been building digital companies, products and platforms together with partners – from the first idea to a sustainable business. These include Payrexx, Hotelcard, Comvation, 1Daily and SwissOwners.',
+			lead: 'I am an entrepreneur by conviction. For more than 25 years, I have been building digital companies, products and platforms together with partners – from the first idea to a sustainable business. These include Payrexx, Hotelcard, Comvation and 1Daily.',
 			partner: 'Official Payrexx Solution Partner',
 			exitLabel: 'Shares sold',
 			cta: 'Get in touch',
@@ -142,22 +136,16 @@ export const ui = {
 			stats: [
 				{ value: '25+', label: 'years as entrepreneur, CEO and board member' },
 				{ value: 'CHF 1bn+', label: 'transactions per year on the Payrexx platform' },
-				{ value: '5', label: 'companies and platforms built – Payrexx, Hotelcard, Comvation, 1Daily, SwissOwners' },
+				{ value: '4+', label: 'companies founded – Payrexx, Hotelcard, Comvation, 1Daily' },
 			],
 			contactEyebrow: 'Contact',
 			ventures: 'What I have built',
 			venturesItems: [
 				{
 					years: 'Current',
-					company: 'SwissOwners.ch',
-					role: 'Founder',
-					text: 'Building a Swiss marketplace for shares in unlisted SMEs and start-ups. Entrepreneurs and investors find each other discreetly – with reviewed listings, a confidentiality agreement and direct contact between the parties.',
-				},
-				{
-					years: 'Current',
 					company: '1Daily AG',
 					role: 'Founder',
-					text: 'Founded 1Daily AG for proprietary trading on the financial markets. Development of proprietary AI-supported analysis and trading systems with a focus on gold.',
+					text: 'Founded 1Daily AG for proprietary trading on the financial markets. Development of proprietary AI-supported analysis and trading systems.',
 				},
 				{
 					years: '2015 – 2025',
