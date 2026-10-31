@@ -15,11 +15,6 @@ const t = ui[lang].home;
 	<main>
 		<!-- Hero -->
 		<section class="hero container">
-			<a class="badge reveal" href="https://www.payrexx.com/?ref=s32026" target="_blank" rel="noopener">
-				<span class="badge-dot" aria-hidden="true"></span>
-				{t.partner}
-				<span aria-hidden="true">↗</span>
-			</a>
 			<h1 class="reveal reveal-2">
 				{t.h1a}<br />
 				<span class="accent">{t.h1b}</span>
@@ -64,7 +59,10 @@ const t = ui[lang].home;
 						<article class="card venture in-view">
 							<div class="venture-top">
 								<span class="venture-num">{String(i + 1).padStart(2, '0')}</span>
-								<span class="venture-years">{v.years}</span>
+								<span class="venture-meta">
+									{'exit' in v && <span class="venture-exit">{t.exitLabel}</span>}
+									<span class:list={['venture-years', { 'is-current': !/\d/.test(v.years) }]}>{v.years}</span>
+								</span>
 							</div>
 							<h3>
 								{'url' in v ? (
@@ -77,6 +75,13 @@ const t = ui[lang].home;
 							</h3>
 							<p class="venture-role">{v.role}</p>
 							<p class="venture-text">{v.text}</p>
+							{'partner' in v && (
+								<a class="badge venture-badge" href="https://www.payrexx.com/?ref=s32026" target="_blank" rel="noopener">
+									<span class="badge-dot" aria-hidden="true"></span>
+									{t.partner}
+									<span aria-hidden="true">↗</span>
+								</a>
+							)}
 						</article>
 					))
 				}
@@ -291,6 +296,32 @@ const t = ui[lang].home;
 		color: var(--accent);
 		font-size: 14px;
 		font-weight: 600;
+	}
+
+	.venture-meta {
+		display: flex;
+		align-items: center;
+		gap: 10px;
+	}
+
+	.venture-exit {
+		padding: 3px 9px;
+		border: 1px solid var(--line-2);
+		border-radius: 999px;
+		font-size: 11.5px;
+		font-weight: 500;
+		color: var(--text-2);
+		white-space: nowrap;
+	}
+
+	.venture-years.is-current {
+		color: var(--accent);
+	}
+
+	.venture-badge {
+		align-self: flex-start;
+		margin: 22px 0 0;
+		font-size: 13px;
 	}
 
 	.venture-years {
