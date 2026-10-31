@@ -15,27 +15,22 @@ const t = ui[lang].home;
 	<main>
 		<!-- Hero -->
 		<section class="hero container">
-			<h1 class="reveal reveal-2">
-				{t.h1a}<br />
-				<span class="accent">{t.h1b}</span>
-			</h1>
-			<p class="hero-lead reveal reveal-3">{t.lead}</p>
-			<div class="hero-actions reveal reveal-4">
-				<a class="btn btn-primary" href="#kontakt">{t.cta} <span aria-hidden="true">→</span></a>
-				<a class="btn btn-ghost" href="#stationen">{t.cta2}</a>
+			<div class="hero-text">
+				<h1 class="reveal reveal-2">
+					{t.h1a}<br />
+					<span class="accent">{t.h1b}</span>
+				</h1>
+				<p class="hero-lead reveal reveal-3">{t.lead}</p>
+				<div class="hero-actions reveal reveal-4">
+					<a class="btn btn-primary" href="#kontakt">{t.cta} <span aria-hidden="true">→</span></a>
+					<a class="btn btn-ghost" href="#stationen">{t.cta2}</a>
+				</div>
 			</div>
-		</section>
-
-		<!-- Bild im leuchtenden Rahmen -->
-		<div class="container">
-			<figure class="hero-frame reveal reveal-4">
-				<picture>
-					<source media="(max-width: 600px)" srcset="/hero-bluemlisalp-mobil.webp" width="900" height="1125" />
-					<img src="/hero-bluemlisalp.webp" width="2576" height="1203" alt={t.imgAlt} fetchpriority="high" />
-				</picture>
-				<figcaption>{t.imgCaption}</figcaption>
+			<figure class="portrait reveal reveal-3">
+				<img src="/portrait-ivan-schmid.webp" width="800" height="800" alt={t.imgAlt} fetchpriority="high" />
+				<figcaption>{t.metaLeft}</figcaption>
 			</figure>
-		</div>
+		</section>
 
 		<!-- Kennzahlen -->
 		<section class="stats container" aria-label={t.venturesEyebrow}>
@@ -165,43 +160,49 @@ const t = ui[lang].home;
 		margin-top: clamp(28px, 3.5vw, 44px);
 	}
 
-	/* ---------- Bild ---------- */
-	.hero-frame {
-		position: relative;
-		margin: clamp(24px, 4vw, 48px) 0 0;
-		padding: 10px;
-		border: 1px solid var(--line-2);
-		border-radius: 28px;
-		background: linear-gradient(180deg, rgba(255, 255, 255, 0.05), rgba(255, 255, 255, 0.01));
-		box-shadow:
-			0 0 0 1px rgba(255, 255, 255, 0.02),
-			-30px -20px 90px -30px rgba(20, 214, 168, 0.35),
-			30px 30px 100px -30px rgba(58, 47, 214, 0.45);
+	/* ---------- Porträt ---------- */
+	.hero {
+		display: grid;
+		grid-template-columns: 1fr auto;
+		align-items: center;
+		gap: clamp(32px, 6vw, 96px);
 	}
 
-	.hero-frame img {
+	.portrait {
+		position: relative;
+		margin: 0;
+		width: clamp(220px, 24vw, 320px);
+		text-align: center;
+	}
+
+	.portrait::before {
+		content: '';
+		position: absolute;
+		inset: -14px;
+		border-radius: 50%;
+		background: conic-gradient(from 200deg, rgba(20, 214, 168, 0.55), rgba(58, 47, 214, 0.35), rgba(255, 255, 255, 0.04), rgba(20, 214, 168, 0.55));
+		filter: blur(18px);
+		opacity: 0.55;
+		z-index: -1;
+	}
+
+	.portrait img {
 		display: block;
 		width: 100%;
 		height: auto;
-		aspect-ratio: 2576 / 1203;
+		aspect-ratio: 1;
+		border-radius: 50%;
+		border: 1px solid rgba(255, 255, 255, 0.14);
+		box-shadow: 0 0 0 8px rgba(255, 255, 255, 0.025);
 		object-fit: cover;
-		object-position: 50% 50%;
-		border-radius: 20px;
 	}
 
-	.hero-frame figcaption {
-		position: absolute;
-		left: 28px;
-		bottom: 26px;
-		padding: 8px 14px;
-		border: 1px solid rgba(255, 255, 255, 0.14);
-		border-radius: 12px;
-		background: rgba(6, 8, 14, 0.6);
-		backdrop-filter: blur(10px);
-		-webkit-backdrop-filter: blur(10px);
+	.portrait figcaption {
+		margin-top: 22px;
 		font-size: 13px;
 		font-weight: 500;
-		color: var(--text);
+		letter-spacing: 0.04em;
+		color: var(--muted);
 	}
 
 	/* ---------- Kennzahlen ---------- */
@@ -406,6 +407,20 @@ const t = ui[lang].home;
 
 	/* ---------- Responsive ---------- */
 	@media (max-width: 900px) {
+		.hero {
+			grid-template-columns: 1fr;
+		}
+
+		.portrait {
+			order: -1;
+			width: 132px;
+			text-align: left;
+		}
+
+		.portrait figcaption {
+			display: none;
+		}
+
 		.venture-grid,
 		.stats {
 			grid-template-columns: 1fr;
@@ -415,9 +430,6 @@ const t = ui[lang].home;
 			grid-template-columns: 1fr;
 		}
 
-		.hero-frame img {
-			aspect-ratio: 16 / 10;
-		}
 	}
 
 	@media (max-width: 560px) {
@@ -425,21 +437,8 @@ const t = ui[lang].home;
 			width: 100%;
 		}
 
-		.hero-frame {
-			padding: 6px;
-			border-radius: 22px;
-		}
 
-		.hero-frame img {
-			aspect-ratio: 4 / 5;
-			border-radius: 16px;
-		}
 
-		.hero-frame figcaption {
-			left: 16px;
-			bottom: 14px;
-			font-size: 12px;
-		}
 
 		.venture-top {
 			margin-bottom: 24px;
