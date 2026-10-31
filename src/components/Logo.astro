@@ -17,7 +17,7 @@ const paths = [...raw.matchAll(/<path[^>]*\sd="([^"]+)"/g)].map((m) => m[1]);
 	.logo {
 		position: relative;
 		display: block;
-		width: 156px;
+		width: 150px;
 		padding-bottom: 7px;
 	}
 
@@ -29,12 +29,12 @@ const paths = [...raw.matchAll(/<path[^>]*\sd="([^"]+)"/g)].map((m) => m[1]);
 	}
 
 	.logo-name {
-		fill: var(--ink);
+		fill: #fff;
 		transition: fill 0.5s var(--ease);
 	}
 
 	.logo-sub {
-		fill: var(--gold);
+		fill: var(--accent);
 		transition: fill 0.5s var(--ease);
 	}
 
@@ -45,7 +45,7 @@ const paths = [...raw.matchAll(/<path[^>]*\sd="([^"]+)"/g)].map((m) => m[1]);
 		right: 0;
 		bottom: 0;
 		height: 1px;
-		background: var(--gold);
+		background: var(--accent);
 		transform: scaleX(0);
 		transform-origin: left;
 		transition: transform 0.7s var(--ease);
@@ -53,12 +53,12 @@ const paths = [...raw.matchAll(/<path[^>]*\sd="([^"]+)"/g)].map((m) => m[1]);
 
 	:global(a:hover) > .logo .logo-name,
 	:global(a:focus-visible) > .logo .logo-name {
-		fill: var(--gold);
+		fill: var(--accent);
 	}
 
 	:global(a:hover) > .logo .logo-sub,
 	:global(a:focus-visible) > .logo .logo-sub {
-		fill: var(--ink);
+		fill: #fff;
 	}
 
 	:global(a:hover) > .logo::after,

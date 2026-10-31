@@ -41,6 +41,15 @@ export const ui = {
 			about: 'Über mich',
 			lead: 'Ich bin Unternehmer aus Überzeugung. Seit über 25 Jahren baue ich gemeinsam mit Partnern digitale Unternehmen, Produkte und Plattformen auf – von der ersten Idee bis zum tragfähigen Geschäft. Dazu gehören Payrexx, Hotelcard, Comvation und 1Daily.',
 			partner: 'Offizieller Payrexx Solution Partner',
+			cta: 'Kontakt aufnehmen',
+			cta2: 'Was ich aufgebaut habe',
+			venturesEyebrow: 'Unternehmerische Erfahrung',
+			stats: [
+				{ value: '25+', label: 'Jahre als Unternehmer, CEO und Verwaltungsrat' },
+				{ value: 'CHF 1 Mrd.+', label: 'Transaktionen pro Jahr auf der Payrexx-Plattform' },
+				{ value: '4+', label: 'gegründete Unternehmen – Payrexx, Hotelcard, Comvation, 1Daily' },
+			],
+			contactEyebrow: 'Kontakt',
 			ventures: 'Was ich aufgebaut habe',
 			venturesItems: [
 				{
@@ -116,6 +125,15 @@ export const ui = {
 			about: 'About me',
 			lead: 'I am an entrepreneur by conviction. For more than 25 years, I have been building digital companies, products and platforms together with partners – from the first idea to a sustainable business. These include Payrexx, Hotelcard, Comvation and 1Daily.',
 			partner: 'Official Payrexx Solution Partner',
+			cta: 'Get in touch',
+			cta2: 'What I have built',
+			venturesEyebrow: 'Entrepreneurial experience',
+			stats: [
+				{ value: '25+', label: 'years as entrepreneur, CEO and board member' },
+				{ value: 'CHF 1bn+', label: 'transactions per year on the Payrexx platform' },
+				{ value: '4+', label: 'companies founded – Payrexx, Hotelcard, Comvation, 1Daily' },
+			],
+			contactEyebrow: 'Contact',
 			ventures: 'What I have built',
 			venturesItems: [
 				{
